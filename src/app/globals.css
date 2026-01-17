@@ -28,38 +28,38 @@
 
 @layer base {
   :root {
-    --background: #0f172a;
-    --foreground: #f8fafc;
+    --background: #fafafa;
+    --foreground: #0d0d0d;
 
-    --card: #1e293b;
-    --card-foreground: #f8fafc;
+    --card: #ffffff;
+    --card-foreground: #0d0d0d;
 
-    --popover: #0f172a;
-    --popover-foreground: #f8fafc;
+    --popover: #ffffff;
+    --popover-foreground: #0d0d0d;
 
-    --primary: #7c3aed;
-    --primary-foreground: #f8fafc;
+    --primary: #ff6b6b;
+    --primary-foreground: #ffffff;
 
-    --secondary: #334155;
-    --secondary-foreground: #f8fafc;
+    --secondary: #4ecdc4;
+    --secondary-foreground: #ffffff;
 
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
+    --muted: #f0f0f0;
+    --muted-foreground: #525252;
 
-    --accent: #1e293b;
-    --accent-foreground: #f8fafc;
+    --accent: #ffd93d;
+    --accent-foreground: #0d0d0d;
 
-    --destructive: #ef4444;
-    --destructive-foreground: #f8fafc;
+    --destructive: #ff4757;
+    --destructive-foreground: #ffffff;
 
-    --border: #334155;
-    --input: #1e293b;
-    --ring: #7c3aed;
+    --border: #d4d4d8;
+    --input: #f5f5f5;
+    --ring: #ff6b6b;
 
     --radius: 0.5rem;
   }
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+  @apply bg-white/80 backdrop-blur-lg border border-blue-200/30 shadow-lg;
 }
