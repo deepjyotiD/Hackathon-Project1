@@ -30,7 +30,7 @@ export async function Navbar() {
                             ) : (
                                 <Link
                                     href="/sign-in"
-                                    className="px-4 py-2 rounded-md bg-primary hover:bg-red-600 text-white font-medium transition-colors"
+                                    className="btn-primary"
                                 >
                                     Login
                                 </Link>

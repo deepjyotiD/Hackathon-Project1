@@ -63,3 +63,174 @@
 .glass {
   @apply bg-white/80 backdrop-blur-lg border border-blue-200/30 shadow-lg;
 }
+
+/* 3D Button Hover Effects */
+@layer components {
+  .btn-primary {
+    @apply relative inline-block px-6 py-3 bg-primary text-white font-semibold rounded-lg transition-all duration-300 overflow-hidden;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    transform: translateY(0);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+    border-radius: 0.5rem;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .btn-primary:hover {
+    background-color: #dc2626;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    transform: translateY(-4px);
+  }
+
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(255, 107, 107, 0.2);
+  }
+
+  .btn-secondary {
+    @apply relative inline-block px-6 py-3 bg-white text-foreground font-semibold rounded-lg border-2 border-gray-300 transition-all duration-300 overflow-hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(0);
+  }
+
+  .btn-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(248, 248, 248, 0.8), transparent);
+    border-radius: 0.5rem;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .btn-secondary:hover {
+    background-color: #f8f8f8;
+    border-color: #ff6b6b;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .btn-secondary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  }
+
+  .btn-icon {
+    @apply relative inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium transition-all duration-300 overflow-hidden;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.25);
+    transform: scale(1);
+  }
+
+  .btn-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-20deg);
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .btn-icon:hover {
+    background-color: #dc2626;
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.35);
+    transform: scale(1.05);
+  }
+
+  .btn-icon:hover::after {
+    animation: shimmer 0.6s infinite;
+  }
+
+  .btn-icon:active {
+    transform: scale(0.98);
+  }
+
+  .btn-cta {
+    @apply relative inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold text-lg rounded-full transition-all duration-300 overflow-hidden;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35);
+    transform: translateY(0);
+  }
+
+  .btn-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 9999px;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .btn-cta:hover {
+    background-color: #dc2626;
+    box-shadow: 0 12px 35px rgba(255, 107, 107, 0.45);
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  .btn-cta:hover::before {
+    opacity: 1;
+  }
+
+  .btn-cta:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
+  }
+
+  .btn-outline {
+    @apply relative inline-block px-4 py-2 border-2 border-gray-300 text-foreground rounded-lg font-medium transition-all duration-300 overflow-hidden;
+    background-color: transparent;
+    transform: translateY(0);
+  }
+
+  .btn-outline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #ff6b6b20 0%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 300ms;
+  }
+
+  .btn-outline:hover {
+    border-color: #ff6b6b;
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.15);
+    transform: translateY(-3px);
+  }
+
+  .btn-outline:hover::before {
+    transform: translateX(0);
+  }
+
+  .btn-outline:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) skewX(-20deg);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%) skewX(-20deg);
+  }
+}

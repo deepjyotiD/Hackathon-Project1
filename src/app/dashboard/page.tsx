@@ -8,7 +8,7 @@ export default function Dashboard() {
                 <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
                 <Link
                     href="/dashboard/report"
-                    className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-red-600 text-white rounded-lg transition-colors font-medium shadow-md"
+                    className="btn-icon"
                 >
                     <Plus className="w-4 h-4" />
                     New Report

@@ -36,13 +36,13 @@ export default async function Home() {
         <div className="mt-10 flex justify-center gap-4">
           <Link
             href="/dashboard"
-            className="px-8 py-4 rounded-full bg-primary text-white font-bold text-lg hover:bg-red-600 transition-all shadow-lg shadow-primary/25 flex items-center gap-2"
+            className="btn-cta flex items-center gap-2"
           >
             Get Started <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
             href="/about"
-            className="px-8 py-4 rounded-full bg-white text-foreground font-bold text-lg hover:bg-gray-100 transition-all border-2 border-gray-300"
+            className="btn-secondary"
           >
             Learn More
           </Link>
