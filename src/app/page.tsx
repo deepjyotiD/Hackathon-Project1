@@ -1,8 +1,17 @@
 import { Navbar } from "@/components/Navbar";
 import Link from "next/link";
-import { ArrowRight, Upload, Sparkles, CheckCircle, ShieldCheck } from "lucide-react";
+import { ArrowRight, Upload, Sparkles, CheckCircle, ShieldCheck, MapPin, Send } from "lucide-react";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+
+  // Redirect to dashboard if already logged in
+  if (userId) {
+    redirect("/dashboard");
+  }
+
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
       {/* Background Gradients */}
@@ -48,7 +57,7 @@ export default function Home() {
             <p className="mt-4 text-gray-600">From upload to resolution in 5 automated steps.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             <FeatureCard
               icon={<Upload className="w-8 h-8 text-blue-500" />}
               title="1. Upload & Locate"
@@ -64,6 +73,16 @@ export default function Home() {
               title="3. Spam Detection"
               description="We automatically filter out spam reports to keep the system clean and efficient."
             />
+            <FeatureCard
+              icon={<CheckCircle className="w-8 h-8 text-emerald-500" />}
+              title="4. Verification"
+              description="Our system verifies the report and cross-references with existing issues in the database."
+            />
+            <FeatureCard
+              icon={<Send className="w-8 h-8 text-orange-500" />}
+              title="5. Dispatch"
+              description="Reports are automatically routed to the correct authorities for fast resolution."
+            />
           </div>
         </div>
       </section>
@@ -73,12 +92,23 @@ export default function Home() {
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
-    <div className="p-6 rounded-2xl bg-white border-2 border-gray-200 hover:border-primary/50 hover:shadow-lg transition-all">
-      <div className="mb-4 bg-gradient-to-br from-blue-50 to-cyan-50 w-16 h-16 rounded-xl flex items-center justify-center border-2 border-blue-200">
-        {icon}
+    <div className="group perspective h-full">
+      <div className="relative h-full p-6 rounded-2xl bg-white border-2 border-gray-200 hover:border-primary/50 transition-all duration-300 transform group-hover:scale-105 group-hover:shadow-2xl group-hover:-translate-y-2" 
+        style={{
+          transformStyle: "preserve-3d",
+          transition: "transform 0.3s ease-out, box-shadow 0.3s ease-out"
+        }}>
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        
+        <div className="relative z-10">
+          <div className="mb-4 bg-gradient-to-br from-blue-50 to-cyan-50 w-16 h-16 rounded-xl flex items-center justify-center border-2 border-blue-200 group-hover:scale-110 transition-transform duration-300">
+            {icon}
+          </div>
+          <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
+          <p className="text-gray-600 text-sm group-hover:text-gray-700 transition-colors duration-300">{description}</p>
+        </div>
       </div>
-      <h3 className="text-xl font-bold text-foreground mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
     </div>
   );
 }
